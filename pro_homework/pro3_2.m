@@ -1,0 +1,11 @@
+t=-1:0.01:10;%生成自变量矩阵
+y1=stepfun(t,0).*cos(pi*t);%表达函数1
+y2=stepfun(t,0)-stepfun(t,4);%表达函数2
+y=conv(y1,y2)*0.01;%计算多项式卷积，将y轴缩短
+n=length(y1)+length(y2)-2;%保持矢量长度必须相同
+x=0:0.01:n*0.01;%重新构造x矢量
+plot(x,y,'r');%画图
+axis([-1,10,0,0.5]);%取个合适范围
+title('卷积函数');
+xlabel('t');
+ylabel('y(t)');
